@@ -19,9 +19,9 @@ class MessageViewHolder extends RecyclerView.ViewHolder{
         textview= itemView.findViewById(R.id.textView);
     }
 
-    public void bind(String message) {
+    public void bind(String message, int position) {
 
-//        textview.setText(String.valueOf(position) + ": " + message);
-        textview.setText(message);
+        textview.setText(String.valueOf(position) + ": " + message);
+//        textview.setText(message);
     }
 }

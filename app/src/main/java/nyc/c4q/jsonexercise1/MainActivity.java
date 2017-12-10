@@ -19,24 +19,19 @@ public class MainActivity extends AppCompatActivity {
     private JSONArray messageArray;
 
     private List<String> messageList= new ArrayList <>();
+    private String TAG=MainActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        String json = Constants.jsonSample;
-//
-//        Message newMessage= getMessageFromJSON(json);
-//
-//        List<Message> listOfMessage= new ArrayList <>();
-
         setJSON();
         getJSONArray();
 
         for (int i = 0; i <  messageArray.length(); i++) {
             try {
-                String oneMessage= String.valueOf(messageArray.getInt(i));
+                String oneMessage= String.valueOf(messageArray.get(i));
                 messageList.add(oneMessage);
                 Log.d("messageList", oneMessage + messageList);
             } catch (JSONException e) {
@@ -53,27 +48,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-//    private Message getMessageFromJSON(String json) {
-//        List<Message> listOfMesage= new ArrayList <>();
-//
-//        try {
-//            Message message= new Message();
-//            JSONObject object= new JSONObject(json);
-//
-//
-//            for (int i = 0; i < ; i++) {
-//
-//            }
-////            message.setStatus(getStringValueFromJson(object, "status"));
-//            String[] mes = getStringArrayFromJson(object, "message");
-//            message.setMessage(mes);
-//
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//
-//        return listOfMesage;
-//    }
+
 
     private String[] getStringArrayFromJson(JSONObject jsonObject, String species2) throws JSONException {
         JSONArray speciesArray = jsonObject.getJSONArray(species2);
@@ -92,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
     private void setJSON() {
         try {
             exercise1= new JSONObject("{\"status\":\"success\",\"message\":[\"affenpinscher\",\"african\",\"airedale\",\"akita\",\"appenzeller\",\"basenji\",\"beagle\",\"bluetick\",\"borzoi\",\"bouvier\",\"boxer\",\"brabancon\",\"briard\",\"bulldog\",\"bullterrier\",\"cairn\",\"chihuahua\",\"chow\",\"clumber\",\"collie\",\"coonhound\",\"corgi\",\"dachshund\",\"dane\",\"deerhound\",\"dhole\",\"dingo\",\"doberman\",\"elkhound\",\"entlebucher\",\"eskimo\",\"germanshepherd\",\"greyhound\",\"groenendael\",\"hound\",\"husky\",\"keeshond\",\"kelpie\",\"komondor\",\"kuvasz\",\"labrador\",\"leonberg\",\"lhasa\",\"malamute\",\"malinois\",\"maltese\",\"mastiff\",\"mexicanhairless\",\"mountain\",\"newfoundland\",\"otterhound\",\"papillon\",\"pekinese\",\"pembroke\",\"pinscher\",\"pointer\",\"pomeranian\",\"poodle\",\"pug\",\"pyrenees\",\"redbone\",\"retriever\",\"ridgeback\",\"rottweiler\",\"saluki\",\"samoyed\",\"schipperke\",\"schnauzer\",\"setter\",\"sheepdog\",\"shiba\",\"shihtzu\",\"spaniel\",\"springer\",\"stbernard\",\"terrier\",\"vizsla\",\"weimaraner\",\"whippet\",\"wolfhound\"]}");
+            Log.d(TAG, "setJSON: "+exercise1.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
